@@ -37,7 +37,15 @@ namespace DataSorter
 <link type=""text/css"" rel=""stylesheet"" href=""content.css"" />
 </head>
 <body>";
-        public const string CSS = @"    <style type=""text/css"">
+
+        public static string CSS
+        {
+            get
+            {
+                return _CSS;
+            }
+        }
+        private static string _CSS = @"    <style type=""text/css"">
         body {
             font-family: ""Arial"";
         }
@@ -48,12 +56,43 @@ namespace DataSorter
             width: 100%;
         }
 
+.div-indent-100{
+margin-left:100px;
+width:100%;
+margin-bottom:30px;
+}
+
+.div-indent-60{
+margin-left:60px;
+width:100%;
+}
+.margin-top-15{
+margin-top:15px;
+}
+
+.div-indent-70{
+margin-left:70px;
+width:100%;
+}
+.width-40{
+width:40%;
+}
+.width-30{
+width:30%;
+}
+.width-20{
+width:20%;
+}
+
+.margin-left-20{
+margin-left:20px;
+}
         li, ul {
             padding-top: 3px;
         }
 
         .larger {
-            font-size: 1.4em;
+            font-size: 1.8em;
         }
 
         .width-100 {
@@ -71,6 +110,10 @@ namespace DataSorter
         ul li ul li {
             font-weight: normal;
         }
+
+.font-larger{
+font-size: 1.4em;
+}
 
         .bold {
             font-weight: bolder;
@@ -90,6 +133,7 @@ namespace DataSorter
                 background-color: blue;
                 height: 3px;
 width: 100%;
+margin-top:35px;
             }
 
             .break.minor {

@@ -113,21 +113,21 @@ namespace DataSorter
         public string House { get; set; }
         [ColumnMap(6)]
         public string Senate { get; set; }
-        [ColumnMap(7)]
-        public bool Processing { get; set; }
         [ColumnMap(8)]
-        public bool Confirmed { get; set; }
+        public bool Processing { get; set; }
         [ColumnMap(9)]
-        public string Scheduler { get; set; }
+        public bool Confirmed { get; set; }
         [ColumnMap(10)]
-        public string Staffer { get; set; }
+        public string Scheduler { get; set; }
         [ColumnMap(11)]
-        public string CongressEmail { get; set; }
+        public string Staffer { get; set; }
         [ColumnMap(12)]
-        public DateTime? MeetingDate { get; set; }
+        public string CongressEmail { get; set; }
         [ColumnMap(13)]
-        public DateTime? MeetingTime { get; set; }
+        public DateTime? MeetingDate { get; set; }
         [ColumnMap(14)]
+        public DateTime? MeetingTime { get; set; }
+        [ColumnMap(15)]
         public string Location { get; set; }
 
     }

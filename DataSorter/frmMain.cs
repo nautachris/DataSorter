@@ -98,29 +98,29 @@ namespace DataSorter
 
             foreach (var stateGroup in _importResults.Where(x => x.Confirmed).GroupBy(x => x.State).OrderBy(x => x.Key))
             {
-                sb.AppendLine("<h2 class=\"underline\">" + stateGroup.Key + "</h2>");
-                sb.AppendLine("<div class=\"break major\"></div>");
+                sb.AppendLine("<h2 class=\"underline margin-left-20 font-larger\">" + stateGroup.Key.ToUpper() + "</h2>");
+                //sb.AppendLine("<div class=\"break major\"></div>");
                 foreach (var congressGroup in stateGroup.GroupBy(x => x.Congressman).OrderBy(x => x.Key))
                 {
                     foreach (var dateGroup in congressGroup.GroupBy(x => new { x.CombinedDate, x.Location }).OrderBy(x => x.Key.CombinedDate))
                     {
                         sb.AppendLine("<div class=\"indent-left\">");
-                        sb.AppendLine("<div class=\"width-100\">");
+                        sb.AppendLine("<div class=\"width-100 margin-top-15\">");
                         sb.AppendLine("<span class=\"span-block bold italics larger\">" + congressGroup.Key + "</span>");
                         sb.AppendLine("<span class=\"span-block bold indent\">" + dateGroup.Key.CombinedDate.ToString("dddd") + ", " + dateGroup.Key.CombinedDate.ToShortDateString() + ", " + dateGroup.Key.CombinedDate.ToShortTimeString() + "</span>");
                         sb.AppendLine("<span class=\"span-block bold indent\">" + dateGroup.Key.Location + "</span>");
                         sb.AppendLine("</div>");
-                        sb.AppendLine("<ul>");
+                        sb.AppendLine("<div class=\"width-100\">");
                         foreach (var fcu in dateGroup.GroupBy(x => x.CreditUnionName).OrderBy(x => x.Key))
                         {
-                            sb.AppendLine("<li>" + fcu.Key + "</li>");
+                            sb.AppendLine("<div class=\"div-indent-70\">" + fcu.Key + "</div>");
                         }
-                        sb.AppendLine("</ul>");
-                        sb.AppendLine("<div class=\"break minor\"></div>");
+                        sb.AppendLine("</div>");
                         sb.AppendLine("</div>");
                     }
 
                 }
+                sb.AppendLine("<div class=\"width-100 break major\"></div>");
             }
 
             sb.Append(WebPieces.End);
@@ -138,28 +138,24 @@ namespace DataSorter
 
             foreach (var fcuGroup in _importResults.Where(x => x.Confirmed).GroupBy(x => x.CreditUnionName).OrderBy(x => x.Key))
             {
-                sb.AppendLine("<h2 class=\"underline\">" + fcuGroup.Key + "</h2>");
-                //sb.AppendLine("<div class=\"break major\"></div>");
-                sb.AppendLine("<ul>");
+                sb.AppendLine("<h2 class=\"underline margin-left-20\">" + fcuGroup.Key + "</h2>");
+                sb.AppendLine("<div class=\"div-indent-60\">");
+
                 foreach (var meeting in fcuGroup.GroupBy(x => new { x.Congressman, x.CombinedDate, x.Location }).OrderBy(x => x.Key.CombinedDate))
                 {
-                    //sb.AppendLine("<li><span>" + meeting.Key.Congressman +
-                    //    " (" + meeting.First().State + ")</span><span class=\"span-block indent\">" +
-                    //    meeting.Key.CombinedDate.ToString("dddd") + ", " +
-                    //    meeting.Key.CombinedDate.ToShortDateString() +
-                    //    ", " + meeting.Key.CombinedDate.ToShortTimeString() +
-                    //    "</span><span class=\"span-block indent\">" +
-                    //    meeting.Key.Location + "</span></li>");
-                    sb.AppendLine("<li><span class=\"span-block\">" +
-                        meeting.Key.CombinedDate.ToShortTimeString() + ", " +
-    meeting.Key.CombinedDate.ToString("dddd") + " " +
-    meeting.Key.CombinedDate.ToShortDateString() +
-    "<span class=\"span-block indent\">" + meeting.Key.Congressman +
-    " (" + meeting.First().State + ")</span>" +
-    "</span><span class=\"span-block indent\">" +
-    meeting.Key.Location + "</span></li>");
+
+                    sb.AppendLine("<div class=\"width-100\">");
+                    sb.AppendLine("<div class=\"width-20\">" +
+    meeting.Key.CombinedDate.ToShortTimeString() + ", " +
+meeting.Key.CombinedDate.ToString("dddd") + " " +
+meeting.Key.CombinedDate.ToShortDateString() +
+"</div><div class=\"width-20\">" + meeting.Key.Congressman +
+" (" + meeting.First().State.ToUpper() + ")</div>" +
+"<div class=\"width-20\">" +
+meeting.Key.Location + "</div>");
+                    sb.AppendLine("</div>");
                 }
-                sb.AppendLine("</ul>");
+                sb.AppendLine("</div>");
                 sb.AppendLine("<div class=\"width-100 break major\"></div>");
                 sb.AppendLine("</div>");
             }
@@ -188,7 +184,7 @@ namespace DataSorter
                     File.Delete(newPath);
                     File.Copy(cssPath, newPath);
                 }
-                
+
             }
 
             CreateFCUGroup();
