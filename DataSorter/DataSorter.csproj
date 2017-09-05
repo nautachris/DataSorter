@@ -96,10 +96,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="WebPieces.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="content.css" />
+    <Content Include="content.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Template.html" />
     <None Include="App.config" />
     <Content Include="schedule.csv">

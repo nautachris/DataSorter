@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCSVPath = new System.Windows.Forms.TextBox();
-            this.txtDelimiter = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSelectCSV = new System.Windows.Forms.Button();
-            this.btnReadCSV = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtHTMLPath = new System.Windows.Forms.TextBox();
             this.btnSelectHTML = new System.Windows.Forms.Button();
             this.btnCreateHTML = new System.Windows.Forms.Button();
             this.tcMain = new System.Windows.Forms.TabControl();
-            this.tpCSV = new System.Windows.Forms.TabPage();
             this.tpGoogle = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,9 +50,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvImport = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tcMain.SuspendLayout();
-            this.tpCSV.SuspendLayout();
             this.tpGoogle.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tpReviewData.SuspendLayout();
@@ -68,92 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvImport)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtCSVPath, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtDelimiter, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnSelectCSV, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnReadCSV, 1, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(713, 435);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(4, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CSV File";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtCSVPath
-            // 
-            this.txtCSVPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCSVPath.Location = new System.Drawing.Point(155, 4);
-            this.txtCSVPath.Name = "txtCSVPath";
-            this.txtCSVPath.ReadOnly = true;
-            this.txtCSVPath.Size = new System.Drawing.Size(451, 20);
-            this.txtCSVPath.TabIndex = 2;
-            // 
-            // txtDelimiter
-            // 
-            this.txtDelimiter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDelimiter.Location = new System.Drawing.Point(155, 35);
-            this.txtDelimiter.Name = "txtDelimiter";
-            this.txtDelimiter.Size = new System.Drawing.Size(451, 20);
-            this.txtDelimiter.TabIndex = 4;
-            this.txtDelimiter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDelimiter_KeyUp);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(4, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 30);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "CSV Delimiter";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnSelectCSV
-            // 
-            this.btnSelectCSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSelectCSV.Location = new System.Drawing.Point(613, 4);
-            this.btnSelectCSV.Name = "btnSelectCSV";
-            this.btnSelectCSV.Size = new System.Drawing.Size(96, 24);
-            this.btnSelectCSV.TabIndex = 6;
-            this.btnSelectCSV.Text = "Select";
-            this.btnSelectCSV.UseVisualStyleBackColor = true;
-            this.btnSelectCSV.Click += new System.EventHandler(this.btnSelectCSV_Click);
-            // 
-            // btnReadCSV
-            // 
-            this.btnReadCSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReadCSV.Location = new System.Drawing.Point(155, 66);
-            this.btnReadCSV.Name = "btnReadCSV";
-            this.btnReadCSV.Size = new System.Drawing.Size(451, 24);
-            this.btnReadCSV.TabIndex = 7;
-            this.btnReadCSV.Text = "Import Data";
-            this.btnReadCSV.UseVisualStyleBackColor = true;
-            this.btnReadCSV.Click += new System.EventHandler(this.btnReadCSV_Click);
             // 
             // label2
             // 
@@ -163,7 +67,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 30);
             this.label2.TabIndex = 1;
-            this.label2.Text = "HTML Output";
+            this.label2.Text = "HTML Output Directory";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtHTMLPath
@@ -199,7 +103,6 @@
             // 
             // tcMain
             // 
-            this.tcMain.Controls.Add(this.tpCSV);
             this.tcMain.Controls.Add(this.tpGoogle);
             this.tcMain.Controls.Add(this.tpReviewData);
             this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -208,17 +111,6 @@
             this.tcMain.SelectedIndex = 0;
             this.tcMain.Size = new System.Drawing.Size(727, 467);
             this.tcMain.TabIndex = 1;
-            // 
-            // tpCSV
-            // 
-            this.tpCSV.Controls.Add(this.tableLayoutPanel1);
-            this.tpCSV.Location = new System.Drawing.Point(4, 22);
-            this.tpCSV.Name = "tpCSV";
-            this.tpCSV.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCSV.Size = new System.Drawing.Size(719, 441);
-            this.tpCSV.TabIndex = 0;
-            this.tpCSV.Text = "Read From CSV";
-            this.tpCSV.UseVisualStyleBackColor = true;
             // 
             // tpGoogle
             // 
@@ -442,10 +334,7 @@
             this.Controls.Add(this.tcMain);
             this.Name = "frmMain";
             this.Text = "frmMain";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.tcMain.ResumeLayout(false);
-            this.tpCSV.ResumeLayout(false);
             this.tpGoogle.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -459,19 +348,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCSVPath;
         private System.Windows.Forms.TextBox txtHTMLPath;
-        private System.Windows.Forms.TextBox txtDelimiter;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSelectCSV;
         private System.Windows.Forms.Button btnSelectHTML;
         private System.Windows.Forms.Button btnCreateHTML;
         private System.Windows.Forms.TabControl tcMain;
-        private System.Windows.Forms.TabPage tpCSV;
         private System.Windows.Forms.TabPage tpGoogle;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label4;
@@ -485,7 +366,6 @@
         private System.Windows.Forms.TextBox txtSheetName;
         private System.Windows.Forms.TextBox txtStartCell;
         private System.Windows.Forms.TextBox txtEndCell;
-        private System.Windows.Forms.Button btnReadCSV;
         private System.Windows.Forms.Button btnReadFromGoogle;
         private System.Windows.Forms.TabPage tpReviewData;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;

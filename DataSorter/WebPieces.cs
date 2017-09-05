@@ -34,6 +34,7 @@ namespace DataSorter
 <head>
     <meta charset=""utf-8"" />
     <title>Meeting Schedule</title>
+<link type=""text/css"" rel=""stylesheet"" href=""content.css"" />
 </head>
 <body>";
         public const string CSS = @"    <style type=""text/css"">
@@ -85,6 +86,11 @@ namespace DataSorter
                 background-color: blue;
                 height: 3px;
             }
+ .break.major.width-100 {
+                background-color: blue;
+                height: 3px;
+width: 100%;
+            }
 
             .break.minor {
                 background-color: gray;
@@ -101,9 +107,12 @@ namespace DataSorter
 
         .span-block {
             display: inline-block;
-            font-weight: bold;
+            
             font-size: 1.1em;
         }
+.bold{
+font-weight: bold;
+}
 
             .span-block.indent {
                 margin-left: 20px;

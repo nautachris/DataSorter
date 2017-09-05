@@ -23,11 +23,7 @@ namespace DataSorter
         public frmMain()
         {
             InitializeComponent();
-
-            txtCSVPath.Text = Properties.Settings.Default.CSVPath;
             txtHTMLPath.Text = Properties.Settings.Default.HTMLPath;
-            txtDelimiter.Text = Properties.Settings.Default.Delimiter;
-
             txtAppName.Text = Properties.Settings.Default.AppName;
             txtEndCell.Text = Properties.Settings.Default.EndCell;
             txtSheetId.Text = Properties.Settings.Default.SheetId;
@@ -38,27 +34,15 @@ namespace DataSorter
 
         }
 
-        private void btnSelectCSV_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "CSV Files|*.csv";
-            ofd.Title = "Select CSV File Saved From Google Sheets";
-            ofd.Multiselect = false;
-            if (ofd.ShowDialog() != DialogResult.OK) return;
-            txtCSVPath.Text = ofd.FileName;
-            Properties.Settings.Default.CSVPath = txtCSVPath.Text;
-            Properties.Settings.Default.Save();
-        }
+
 
         private void btnSelectHTML_Click(object sender, EventArgs e)
         {
-            SaveFileDialog ofd = new SaveFileDialog();
-            ofd.Filter = "HTML Files|*.html";
-            ofd.Title = "Select HTML File to Save";
-            ofd.AddExtension = true;
-            ofd.CreatePrompt = true;
-            if (ofd.ShowDialog() != DialogResult.OK) return;
-            txtHTMLPath.Text = ofd.FileName;
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Select HTML Output Directory";
+            fbd.ShowNewFolderButton = true;
+            if (fbd.ShowDialog() != DialogResult.OK) return;
+            txtHTMLPath.Text = fbd.SelectedPath;
             Properties.Settings.Default.HTMLPath = txtHTMLPath.Text;
             Properties.Settings.Default.Save();
         }
@@ -106,12 +90,8 @@ namespace DataSorter
 
         }
 
-        private void btnCreateHTML_Click(object sender, EventArgs e)
+        private void CreateMOCGroup()
         {
-            if (_importResults == null)
-            {
-                MessageBox.Show("You need to import your data first!", "Data Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             var sb = new StringBuilder(WebPieces.Start);
             sb.AppendLine(WebPieces.CSS);
 
@@ -126,9 +106,9 @@ namespace DataSorter
                     {
                         sb.AppendLine("<div class=\"indent-left\">");
                         sb.AppendLine("<div class=\"width-100\">");
-                        sb.AppendLine("<span class=\"span-block italics larger\">" + congressGroup.Key + "</span>");
-                        sb.AppendLine("<span class=\"span-block indent\">" + dateGroup.Key.CombinedDate.ToString("dddd") + ", " + dateGroup.Key.CombinedDate.ToShortDateString() + ", " + dateGroup.Key.CombinedDate.ToShortTimeString() + "</span>");
-                        sb.AppendLine("<span class=\"span-block indent\">" + dateGroup.Key.Location + "</span>");
+                        sb.AppendLine("<span class=\"span-block bold italics larger\">" + congressGroup.Key + "</span>");
+                        sb.AppendLine("<span class=\"span-block bold indent\">" + dateGroup.Key.CombinedDate.ToString("dddd") + ", " + dateGroup.Key.CombinedDate.ToShortDateString() + ", " + dateGroup.Key.CombinedDate.ToShortTimeString() + "</span>");
+                        sb.AppendLine("<span class=\"span-block bold indent\">" + dateGroup.Key.Location + "</span>");
                         sb.AppendLine("</div>");
                         sb.AppendLine("<ul>");
                         foreach (var fcu in dateGroup.GroupBy(x => x.CreditUnionName).OrderBy(x => x.Key))
@@ -144,10 +124,76 @@ namespace DataSorter
             }
 
             sb.Append(WebPieces.End);
-            var writer = File.CreateText(Properties.Settings.Default.HTMLPath);
+            var writer = File.CreateText(Properties.Settings.Default.HTMLPath + "\\HillMeetingsMOC.html");
             writer.WriteLine(sb.ToString());
             writer.Close();
-            System.Diagnostics.Process.Start(Properties.Settings.Default.HTMLPath);
+            System.Diagnostics.Process.Start(Properties.Settings.Default.HTMLPath + "\\HillMeetingsMOC.html");
+        }
+
+        private void CreateFCUGroup()
+        {
+            var sb = new StringBuilder(WebPieces.Start);
+            sb.AppendLine(WebPieces.CSS);
+
+
+            foreach (var fcuGroup in _importResults.Where(x => x.Confirmed).GroupBy(x => x.CreditUnionName).OrderBy(x => x.Key))
+            {
+                sb.AppendLine("<h2 class=\"underline\">" + fcuGroup.Key + "</h2>");
+                //sb.AppendLine("<div class=\"break major\"></div>");
+                sb.AppendLine("<ul>");
+                foreach (var meeting in fcuGroup.GroupBy(x => new { x.Congressman, x.CombinedDate, x.Location }).OrderBy(x => x.Key.CombinedDate))
+                {
+                    //sb.AppendLine("<li><span>" + meeting.Key.Congressman +
+                    //    " (" + meeting.First().State + ")</span><span class=\"span-block indent\">" +
+                    //    meeting.Key.CombinedDate.ToString("dddd") + ", " +
+                    //    meeting.Key.CombinedDate.ToShortDateString() +
+                    //    ", " + meeting.Key.CombinedDate.ToShortTimeString() +
+                    //    "</span><span class=\"span-block indent\">" +
+                    //    meeting.Key.Location + "</span></li>");
+                    sb.AppendLine("<li><span class=\"span-block\">" +
+                        meeting.Key.CombinedDate.ToShortTimeString() + ", " +
+    meeting.Key.CombinedDate.ToString("dddd") + " " +
+    meeting.Key.CombinedDate.ToShortDateString() +
+    "<span class=\"span-block indent\">" + meeting.Key.Congressman +
+    " (" + meeting.First().State + ")</span>" +
+    "</span><span class=\"span-block indent\">" +
+    meeting.Key.Location + "</span></li>");
+                }
+                sb.AppendLine("</ul>");
+                sb.AppendLine("<div class=\"width-100 break major\"></div>");
+                sb.AppendLine("</div>");
+            }
+
+            sb.Append(WebPieces.End);
+            var writer = File.CreateText(Properties.Settings.Default.HTMLPath + "\\HillMeetingsFCU.html");
+            writer.WriteLine(sb.ToString());
+            writer.Close();
+            System.Diagnostics.Process.Start(Properties.Settings.Default.HTMLPath + "\\HillMeetingsFCU.html");
+        }
+
+        private void btnCreateHTML_Click(object sender, EventArgs e)
+        {
+            if (_importResults == null)
+            {
+                MessageBox.Show("You need to import your data first!", "Data Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //copy css
+            var cssPath = AppDomain.CurrentDomain.BaseDirectory + "content.css";
+            var newPath = Properties.Settings.Default.HTMLPath + "\\content.css";
+            if (File.Exists(cssPath))
+            {
+                if (File.Exists(newPath) && cssPath != newPath)
+                {
+                    File.Delete(newPath);
+                    File.Copy(cssPath, newPath);
+                }
+                
+            }
+
+            CreateFCUGroup();
+            CreateMOCGroup();
+
         }
 
         private void txtSheetId_KeyUp(object sender, KeyEventArgs e)
