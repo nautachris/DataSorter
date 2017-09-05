@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataSorter.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CSVPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HTMLPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Delimiter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">|</Value>
+    </Setting>
+    <Setting Name="SheetId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1d35X8k_0TZ8q02WwLHlEViV4Nb6ZiJ4VS9YiDzNFIXc</Value>
+    </Setting>
+    <Setting Name="AppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sheets Test</Value>
+    </Setting>
+    <Setting Name="SheetName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Individual MOC List</Value>
+    </Setting>
+    <Setting Name="StartCell" Type="System.String" Scope="User">
+      <Value Profile="(Default)">A2</Value>
+    </Setting>
+    <Setting Name="EndCell" Type="System.String" Scope="User">
+      <Value Profile="(Default)">O435</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
