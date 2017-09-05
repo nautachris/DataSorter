@@ -1,0 +1,69 @@
+﻿body
+{
+    font-family: "Arial";
+    font-size: 200;
+        
+    
+}
+
+.indent-left{
+    margin-left:50px;
+    float:left;
+    width: 100%;
+}
+li, ul{
+    padding-top: 3px;
+}
+.larger{
+    font-size: 1.4em;
+}
+.width-100{
+    width:100%;
+}
+div{
+    float:left;
+}
+.left{
+    float:left;
+}
+ul li ul li{
+    font-weight: normal;
+}
+.bold{
+    font-weight: bolder;
+}
+.break{
+    float: left;
+    
+    width: 90%;
+        margin-bottom: 5px;  
+
+}
+
+.break.major{
+      background-color: blue;
+        height: 3px;
+}
+.break.minor{
+    background-color: gray;
+        height: 2px;
+}
+.italics{
+    font-style: italic;
+}
+.underline{
+    text-decoration: underline;
+}
+.span-block{
+    display: inline-block;
+    font-weight: bold;
+    font-size:1.1em;
+}
+
+.span-block.indent{
+    margin-left: 20px;
+}
+
+ul{
+    margin-left: 100px;
+}
