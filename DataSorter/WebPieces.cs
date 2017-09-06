@@ -8,6 +8,80 @@ namespace DataSorter
 {
     public class WebPieces
     {
+        public const string MOCCSS = @"
+<style type=""text/css"">
+
+.indent-left {
+            padding-left: 10%;
+        }
+ul {
+    list-style: none outside none;
+    margin: 0 0 15px;
+    padding: 0;
+}
+ul li {
+    padding: 0 0 0 17px;
+    margin: 0 30px 5px 15px;
+    background: url('http://www.nafcu.org/images/blue-bullet.png') no-repeat 0 6px;
+}
+
+        .larger {
+            font-size: 1.4em;
+        }
+
+        .width-100 {
+            width: 100%;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .break {
+            margin-bottom: 5px;
+        }
+
+h2.underline {
+margin-bottom:2px;
+background-color: #003768;
+color: #ffffff;
+margin-top:20px;
+padding:5px;
+}
+            
+.break.major {
+margin-top: 0; 
+padding-top: 0;               
+                height: 2px;
+width:100%;
+            }
+
+            .break.minor {
+                background-color: #cccccc;
+                height: 1px;
+            }
+
+        .italics {
+            font-style: italic;
+        }
+
+        .span-block {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+            .span-block.indent {
+                margin-left: 20px;
+            }
+
+    
+</style>
+
+
+";
+
+
         public const string CongressBlock = @"<div class=""indent-left"">
         <div class=""width-100"">
             <span class=""span-block italics larger"">[CongressName]</span>
@@ -21,10 +95,8 @@ namespace DataSorter
         <div class=""break minor""></div>
     </div>";
 
-        public const string StateBlock = @"    <h2 class=""underline"">[StateName]</h2>
-    <div class=""break major""></div>
-[CongressBlock]";
-        public const string FCUBlock = @"<li class=""bold"">[FCUName]</li>";
+
+
 
 
         public const string End = @"</body>
@@ -35,6 +107,17 @@ namespace DataSorter
     <meta charset=""utf-8"" />
     <title>Meeting Schedule</title>
 <link type=""text/css"" rel=""stylesheet"" href=""content.css"" />
+</head>
+<body>";
+
+                public const string StartWithNAFCUCSS = @"<!DOCTYPE html>
+<html lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">
+<head>
+    <meta charset=""utf-8"" />
+    <title>Meeting Schedule</title>
+<link href=""http://www.nafcu.org/css/styles.css"" rel=""stylesheet"" type=""text/css"">
+<link href=""http://www.nafcu.org/css/medium.css"" rel=""stylesheet"" type=""text/css"">
+<link href=""http://www.nafcu.org/css/small.css"" rel=""stylesheet"" type=""text/css"">
 </head>
 <body>";
 

@@ -89,11 +89,50 @@ namespace DataSorter
             }
 
         }
+        private void CreateMOCGroupNew()
+        {
+            var sb = new StringBuilder(WebPieces.StartWithNAFCUCSS);
+            sb.AppendLine(WebPieces.MOCCSS);
 
+
+            foreach (var stateGroup in _importResults.Where(x => x.Confirmed).GroupBy(x => x.State).OrderBy(x => x.Key))
+            {
+                sb.AppendLine("<h2 class=\"underline\">" + stateGroup.Key.ToUpper() + "</h2>");
+                sb.AppendLine("<div class=\"break major\"></div>");
+                foreach (var congressGroup in stateGroup.GroupBy(x => x.Congressman).OrderBy(x => x.Key))
+                {
+                    foreach (var dateGroup in congressGroup.GroupBy(x => new { x.CombinedDate, x.Location }).OrderBy(x => x.Key.CombinedDate))
+                    {
+                        sb.AppendLine("<div class=\"indent-left\">");
+                        sb.AppendLine("<div class=\"width-100\">");
+                        sb.AppendLine("<span class=\"span-block italics larger\">" + congressGroup.Key + "</span>");
+                        sb.AppendLine("<span class=\"span-block indent\">" + dateGroup.Key.CombinedDate.ToString("dddd") + ", " + dateGroup.Key.CombinedDate.ToShortDateString() + ", " + dateGroup.Key.CombinedDate.ToShortTimeString() + "</span>");
+                        sb.AppendLine("<span class=\"span-block indent\">" + dateGroup.Key.Location + "</span>");
+                        sb.AppendLine("</div>");
+                        sb.AppendLine("<ul>");
+                        foreach (var fcu in dateGroup.GroupBy(x => x.CreditUnionName).OrderBy(x => x.Key))
+                        {
+                            sb.AppendLine("<li>" + fcu.Key + "</li>");
+                        }
+                        sb.AppendLine("</ul>");
+                        sb.AppendLine("<div class=\"break minor\"></div>");
+                        sb.AppendLine("</div>");
+                    }
+
+                }
+                sb.AppendLine("<div class=\"width-100 break major\"></div>");
+            }
+
+            sb.Append(WebPieces.End);
+            var writer = File.CreateText(Properties.Settings.Default.HTMLPath + "\\HillMeetingsMOC.html");
+            writer.WriteLine(sb.ToString());
+            writer.Close();
+            System.Diagnostics.Process.Start(Properties.Settings.Default.HTMLPath + "\\HillMeetingsMOC.html");
+        }
         private void CreateMOCGroup()
         {
             var sb = new StringBuilder(WebPieces.Start);
-            sb.AppendLine(WebPieces.CSS);
+            sb.AppendLine(WebPieces.MOCCSS);
 
 
             foreach (var stateGroup in _importResults.Where(x => x.Confirmed).GroupBy(x => x.State).OrderBy(x => x.Key))
@@ -188,7 +227,8 @@ meeting.Key.Location + "</div>");
             }
 
             CreateFCUGroup();
-            CreateMOCGroup();
+            //CreateMOCGroup();
+            CreateMOCGroupNew();
 
         }
 
