@@ -8,6 +8,75 @@ namespace DataSorter
 {
     public class WebPieces
     {
+        public const string CUCSS = @"
+<style type=""text/css"">
+.indent-left {
+            padding-left: 10%;
+        }
+
+ul {
+    list-style: none outside none;
+    margin: 0 0 15px;
+    padding: 0;
+}
+ul li {
+    padding: 0 0 0 17px;
+    margin: 0 30px 5px 15px;
+    background: url('http://www.nafcu.org/images/blue-bullet.png') no-repeat 0 6px;
+}
+
+        .larger {
+            font-size: 1.4em;
+        }
+
+        .width-100 {
+            width: 100%;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .break {
+            margin-bottom: 5px;
+        }
+
+h2.underline {
+margin-bottom:2px;
+background-color: #003768;
+color: #ffffff;
+margin-top:20px;
+padding:5px;
+}
+            
+.break.major {
+margin-top: 0; 
+padding-top: 0;               
+                height: 2px;
+width:100%;
+            }
+
+            .break.minor {
+                background-color: #cccccc;
+                height: 1px;
+            }
+
+        .italics {
+            font-style: italic;
+        }
+
+        .span-block {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+            .span-block.indent {
+                margin-left: 20px;
+            }
+
+    </style>
+";
         public const string MOCCSS = @"
 <style type=""text/css"">
 
