@@ -12,19 +12,19 @@
       <Value Profile="(Default)">|</Value>
     </Setting>
     <Setting Name="SheetId" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1d35X8k_0TZ8q02WwLHlEViV4Nb6ZiJ4VS9YiDzNFIXc</Value>
+      <Value Profile="(Default)">1vxt_c0h7PaSX_oMNcwS4PuvQhRKmwEMbEgg58XarDgQ</Value>
     </Setting>
     <Setting Name="AppName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Sheets Test</Value>
     </Setting>
     <Setting Name="SheetName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Individual MOC List</Value>
+      <Value Profile="(Default)">Sheet1</Value>
     </Setting>
     <Setting Name="StartCell" Type="System.String" Scope="User">
-      <Value Profile="(Default)">A2</Value>
+      <Value Profile="(Default)">A1</Value>
     </Setting>
     <Setting Name="EndCell" Type="System.String" Scope="User">
-      <Value Profile="(Default)">O435</Value>
+      <Value Profile="(Default)">P251</Value>
     </Setting>
   </Settings>
 </SettingsFile>

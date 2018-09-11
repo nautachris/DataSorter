@@ -65,7 +65,16 @@ namespace DataSorter
                     if (vals.Length > idx && vals[idx] != null)
                     {
                         DateTime test;
-                        if (DateTime.TryParse(vals[idx].ToString(), out test)) prop.SetValue(this, test);
+                        if (DateTime.TryParse(vals[idx].ToString(), out test))
+                        {
+                            prop.SetValue(this, test);
+                        }
+                        else if (vals[idx].ToString().Contains(","))
+                        {
+                            var strp = vals[idx].ToString().Split(',')[1];
+                            var dt = Convert.ToDateTime(strp);
+                            prop.SetValue(this, dt);
+                        }
                     }
                 }
 
@@ -101,33 +110,48 @@ namespace DataSorter
 
         [ColumnMap(0)]
         public string CreditUnionName { get; set; }
+
         [ColumnMap(1)]
         public string FirstName { get; set; }
+
         [ColumnMap(2)]
         public string LastName { get; set; }
+
         [ColumnMap(3)]
         public string Email { get; set; }
+
         [ColumnMap(4)]
         public string State { get; set; }
+
         [ColumnMap(5)]
         public string House { get; set; }
+
         [ColumnMap(6)]
         public string Senate { get; set; }
+
+
         [ColumnMap(8)]
         public bool Processing { get; set; }
+
         [ColumnMap(9)]
         public bool Confirmed { get; set; }
+
         [ColumnMap(10)]
         public string Scheduler { get; set; }
-        [ColumnMap(11)]
-        public string Staffer { get; set; }
+
         [ColumnMap(12)]
-        public string CongressEmail { get; set; }
+        public string Staffer { get; set; }
+
         [ColumnMap(13)]
-        public DateTime? MeetingDate { get; set; }
+        public string CongressEmail { get; set; }
+
         [ColumnMap(14)]
-        public DateTime? MeetingTime { get; set; }
+        public DateTime? MeetingDate { get; set; }
+
         [ColumnMap(15)]
+        public DateTime? MeetingTime { get; set; }
+
+        [ColumnMap(16)]
         public string Location { get; set; }
 
     }
